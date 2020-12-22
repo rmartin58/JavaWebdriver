@@ -8,25 +8,27 @@ public class LoginPage {
     private By usernameField = By.id("username");
     private By passwordField = By.id("password");
     private By loginButton = By.cssSelector("#login button");
-
-
+    private By statusAlert = By.id("flash");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-//        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-
     public void setUsernameField(String username) {
         driver.findElement(usernameField).sendKeys(username);
     }
 
-    public void setPasswordField(String password){
+    public void setPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
 
-    public SecureAreaPage clickLoginButton(){
+    public SecureAreaPage clickLoginButton() {
         driver.findElement(loginButton).click();
         return new SecureAreaPage(driver);
     }
+
+    public String getAlertText() {
+        return driver.findElement(statusAlert).getText();
+    }
 }
+

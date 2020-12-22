@@ -6,13 +6,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
+
 public class BaseTests {
-    private static WebDriver driver;
-    protected HomePage homePage;
+    protected static WebDriver driver;
+    public HomePage homePage;
 
     @BeforeClass
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+    public void classSetUp() {
+        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/");
         homePage = new HomePage(driver);
@@ -22,5 +23,4 @@ public class BaseTests {
     public void tearDown() {
         driver.quit();
     }
-
 }

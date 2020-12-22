@@ -8,9 +8,14 @@ public class HomePage {
     private WebDriver driver;
     private final String formAuthentication = "Form Authentication";
     private final String dropDown = "Dropdown";
+    private final String forgotPassword = "Forgot Password";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    private void clickLink(String linkText) {
+        driver.findElement(By.linkText(linkText)).click();
     }
 
     public LoginPage clickFormAuthentication(){
@@ -22,7 +27,9 @@ public class HomePage {
         clickLink(dropDown);
         return new DropdownPage(driver);
     }
-    private void clickLink(String linkText) {
-        driver.findElement(By.linkText(linkText)).click();
+
+    public ForgotPasswordPage clickForgotPassword() {
+        clickLink(forgotPassword);
+        return new ForgotPasswordPage(driver);
     }
 }
