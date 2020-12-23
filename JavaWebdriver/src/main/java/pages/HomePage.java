@@ -10,6 +10,7 @@ public class HomePage {
     private final String dropDown = "Dropdown";
     private final String forgotPassword = "Forgot Password";
     private final String hovers = "Hovers";
+    private final String checkboxes = "Checkboxes";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -37,5 +38,10 @@ public class HomePage {
     public HoversPage clickHovers() {
         clickLink(hovers);
         return new HoversPage(driver);
+    }
+
+    public CheckBoxPage clickCheckBox() {
+        clickLink(checkboxes);
+        return new CheckBoxPage(driver);
     }
 }
