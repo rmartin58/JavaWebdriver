@@ -9,6 +9,7 @@ public class HomePage {
     private final String formAuthentication = "Form Authentication";
     private final String dropDown = "Dropdown";
     private final String forgotPassword = "Forgot Password";
+    private final String hovers = "Hovers";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -31,5 +32,10 @@ public class HomePage {
     public ForgotPasswordPage clickForgotPassword() {
         clickLink(forgotPassword);
         return new ForgotPasswordPage(driver);
+    }
+
+    public HoversPage clickHovers() {
+        clickLink(hovers);
+        return new HoversPage(driver);
     }
 }
