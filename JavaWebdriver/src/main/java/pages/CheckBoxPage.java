@@ -36,13 +36,12 @@ public class CheckBoxPage {
         checkBox.click();
     }
 
-    public String getCheckBoxByLabel(String label) {
+    public String[] getCheckBoxByLabel(String label) {
         WebElement checkBoxes = driver.findElement(checkboxes);
 
-        String innerText = checkBoxes.getAttribute("innerHTML");
-        String[] cbLabels = checkBoxLabels.split("<br>");
+        String checkBoxInnerText = checkBoxes.getAttribute("innerHTML");
 
-        return innerText;
+        return checkBoxInnerText.split("<br>");
     }
 }
 

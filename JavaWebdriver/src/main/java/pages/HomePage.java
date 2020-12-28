@@ -44,4 +44,14 @@ public class HomePage {
         clickLink(checkboxes);
         return new CheckBoxPage(driver);
     }
+
+    public void testCaseSleep(int milliseconds) {
+        StringBuilder msg = new StringBuilder();
+        msg.append(String.format("Sleeping: %d ms", milliseconds));
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

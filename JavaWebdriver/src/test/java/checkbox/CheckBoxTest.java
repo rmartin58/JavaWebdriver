@@ -1,6 +1,7 @@
 package checkbox;
 
 import base.BaseTests;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckBoxPage;
@@ -13,7 +14,8 @@ public class CheckBoxTest extends BaseTests {
     public void testCheckBoxByIndex() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
-        Assert.assertEquals(checkBoxPage.getCheckBoxes().size(),2);
+        List<WebElement> checkBoxList = checkBoxPage.getCheckBoxes();
+        Assert.assertEquals(checkBoxList.size(),2);
 
         Assert.assertFalse(checkBoxPage.getCheckBoxByIndex(1).isSelected());
         Assert.assertTrue(checkBoxPage.getCheckBoxByIndex(2).isSelected());
@@ -28,7 +30,7 @@ public class CheckBoxTest extends BaseTests {
     @Test
     public void testCheckBoxByLabel() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
-
-        String checkBoxLabels = checkBoxPage.getCheckBoxByLabel("checkbox 1");
+        String[] checkBoxLabels = checkBoxPage.getCheckBoxByLabel("checkbox 1");
+        Assert.assertEquals(checkBoxLabels.length, 2);
     }
 }
