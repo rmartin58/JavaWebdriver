@@ -40,7 +40,6 @@ public class CheckBoxPage {
         WebElement checkBoxes = driver.findElement(checkboxes);
 
         String innerText = checkBoxes.getAttribute("innerHTML");
-        String[] cbLabels = checkBoxLabels.split("<br>");
 
         return innerText;
     }

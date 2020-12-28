@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckBoxPage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CheckBoxTest extends BaseTests {
@@ -30,5 +31,8 @@ public class CheckBoxTest extends BaseTests {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
         String checkBoxLabels = checkBoxPage.getCheckBoxByLabel("checkbox 1");
+        String[] cbLabels = checkBoxLabels.split("<br>");
+
+        System.out.println(Arrays.toString(cbLabels));
     }
 }
