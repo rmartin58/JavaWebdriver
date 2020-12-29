@@ -14,11 +14,19 @@ public class BaseTests {
     protected static WebDriver driver;
     public HomePage homePage;
 
-    private final String operatingSystemName = System.getProperty("os.name");
-    private final String operatingSystemVersion = System.getProperty("os.version");
-    private final String windowsChromeDriver = "resources/chromedriver.exe";
-    private final String macChromeDriver = "resources/chromedriver";
-    private final String baseURL = "https://the-internet.herokuapp.com/";
+    private final String operatingSystemName;
+    private final String operatingSystemVersion;
+    private final String windowsChromeDriver;
+    private final String macChromeDriver;
+    private final String baseURL;
+
+    public BaseTests() {
+        operatingSystemName = System.getProperty("os.name");
+        operatingSystemVersion = System.getProperty("os.version");
+        windowsChromeDriver = "resources/chromedriver.exe";
+        macChromeDriver = "resources/chromedriver";
+        baseURL = "https://the-internet.herokuapp.com/";
+    }
 
     @BeforeClass
     public void classSetUp() {

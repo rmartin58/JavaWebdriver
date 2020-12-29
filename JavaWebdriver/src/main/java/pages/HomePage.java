@@ -11,6 +11,8 @@ public class HomePage {
     private final String forgotPassword = "Forgot Password";
     private final String hovers = "Hovers";
     private final String checkboxes = "Checkboxes";
+    private final String fileUpload = "File Upload";
+    private final String fileDownLoad = "File Download";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -20,7 +22,7 @@ public class HomePage {
         driver.findElement(By.linkText(linkText)).click();
     }
 
-    public LoginPage clickFormAuthentication(){
+    public LoginPage clickFormAuthentication() {
         clickLink(formAuthentication);
         return new LoginPage(driver);
     }
@@ -53,5 +55,15 @@ public class HomePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public FileUpLoadPage clickFileUpload() {
+        clickLink(fileUpload);
+        return new FileUpLoadPage(driver);
+    }
+
+    public FileDownLoadPage clickFileDownLoad() {
+        clickLink(fileDownLoad);
+        return new FileDownLoadPage(driver);
     }
 }
