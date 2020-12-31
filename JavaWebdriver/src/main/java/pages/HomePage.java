@@ -47,16 +47,6 @@ public class HomePage {
         return new CheckBoxPage(driver);
     }
 
-    public void testCaseSleep(int milliseconds) {
-        StringBuilder msg = new StringBuilder();
-        msg.append(String.format("Sleeping: %d ms", milliseconds));
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public FileUpLoadPage clickFileUpload() {
         clickLink(fileUpload);
         return new FileUpLoadPage(driver);
@@ -65,5 +55,20 @@ public class HomePage {
     public FileDownLoadPage clickFileDownLoad() {
         clickLink(fileDownLoad);
         return new FileDownLoadPage(driver);
+    }
+
+    public ContextMenuPage clickContextMenu() {
+        clickLink("Context Menu");
+        return new ContextMenuPage(driver);
+    }
+
+    public AlertsPage clickJavaScriptAlerts() {
+        clickLink("JavaScript Alerts");
+        return new AlertsPage(driver);
+    }
+
+    public DynamicLoadingPage clickDynamicLoading(){
+        clickLink("Dynamic Loading");
+        return new DynamicLoadingPage(driver);
     }
 }

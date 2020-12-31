@@ -10,8 +10,6 @@ public class FileDownLoadPage {
         this.driver = driver;
     }
 
-
-
     public void clickLink(String linkText) {
         driver.findElement(By.linkText(linkText)).click();
     }

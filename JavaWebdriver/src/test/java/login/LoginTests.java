@@ -1,24 +1,16 @@
 package login;
 
 import base.BaseTests;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.EmailSentConfirmationPage;
+import pages.ForgotPasswordPage;
+import pages.LoginPage;
+import pages.SecureAreaPage;
 
 import static org.testng.Assert.assertTrue;
 
 public class LoginTests extends BaseTests {
 
-    @AfterMethod
-    public void goToHomePage() {
-        driver.navigate().to("https://the-internet.herokuapp.com/");
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Test
     public void testSuccessfulLogin() {
