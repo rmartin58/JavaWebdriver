@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckBoxPage;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CheckBoxTest extends BaseTests {
@@ -14,7 +13,8 @@ public class CheckBoxTest extends BaseTests {
     public void testCheckBoxByIndex() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
-        Assert.assertEquals(checkBoxPage.getCheckBoxes().size(),2);
+        List<WebElement> checkBoxList = checkBoxPage.getCheckBoxes();
+        Assert.assertEquals(checkBoxList.size(),2);
 
         Assert.assertFalse(checkBoxPage.getCheckBoxByIndex(1).isSelected());
         Assert.assertTrue(checkBoxPage.getCheckBoxByIndex(2).isSelected());
@@ -31,8 +31,5 @@ public class CheckBoxTest extends BaseTests {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
         String checkBoxLabels = checkBoxPage.getCheckBoxByLabel("checkbox 1");
-        String[] cbLabels = checkBoxLabels.split("<br>");
-
-        System.out.println(Arrays.toString(cbLabels));
     }
 }
