@@ -1,6 +1,7 @@
 package checkbox;
 
 import base.BaseTests;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckBoxPage;

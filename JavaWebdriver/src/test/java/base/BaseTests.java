@@ -16,11 +16,15 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Date;
 
 public class BaseTests {
 
-    public static Logger logger = LogManager.getLogger(BaseTests.class.getSimpleName());
+    protected static Logger logger = LogManager.getLogger(BaseTests.class.getName());
 
     public HomePage homePage;
 
@@ -42,6 +46,13 @@ public class BaseTests {
 
     @BeforeSuite
     public void suiteSetUp() {
+        logger.trace("this is a trace msg");
+        logger.debug("this is a debug msg");
+        logger.info("this is an info msg");
+        logger.warn("this is a warning msg");
+        logger.error("this is an error msg");
+        logger.fatal("this is a fatal msg");
+
         logger.info("*******************************");
         logger.info(new Date().toString());
         logger.info(String.format("OS name: %s", operatingSystemName));
@@ -84,11 +95,14 @@ public class BaseTests {
 
     @AfterMethod
     public void recordFailure(ITestResult result) {
+        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSSS");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String ldtString = FOMATTER.format(localDateTime);
         if (ITestResult.FAILURE == result.getStatus()) {
             var camera = (TakesScreenshot) driver;
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             try {
-                Files.move(screenshot, new File("screenshots/" + result.getName() + ".png"));
+                Files.move(screenshot, new File("screenshots/" + ldtString + "." + result.getName() + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -97,7 +111,9 @@ public class BaseTests {
 
     private ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
+        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        options.setExperimentalOption("useAutomationExtension", false);
+//        options.addArguments("disable-infobars");
         return options;
     }
     public WindowManager getWindowManager(){
