@@ -11,7 +11,7 @@ import java.util.List;
 public class CheckBoxTest extends BaseTests {
 
     @Test
-    public void testCheckBoxByIndex() {
+    public void shouldBeAbleToCheckBoxByIndex() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
         List<WebElement> checkBoxList = checkBoxPage.getCheckBoxes();
@@ -28,7 +28,7 @@ public class CheckBoxTest extends BaseTests {
     }
 
     @Test
-    public void testCheckBoxByLabel() {
+    public void shouldBeAbleToCheckBoxByLabel() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
         String[] checkBoxLabels = checkBoxPage.getCheckBoxByLabel("checkbox 1");
         Assert.assertEquals(checkBoxLabels.length, 2);
