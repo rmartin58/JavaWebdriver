@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 public class DropdownTests extends BaseTests {
 
     @Test
-    public void testSelectOption() {
+    public void shouldBeAbleToSelectOption() {
         var dropDownPage =homePage.clickDropDown();
         String option1 = "Option 1";
         String option2 = "Option 2";

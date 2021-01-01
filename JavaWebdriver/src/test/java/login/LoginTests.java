@@ -1,27 +1,19 @@
 package login;
 
 import base.BaseTests;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.EmailSentConfirmationPage;
+import pages.ForgotPasswordPage;
+import pages.LoginPage;
+import pages.SecureAreaPage;
 
 import static org.testng.Assert.assertTrue;
 
 public class LoginTests extends BaseTests {
 
-    @AfterMethod
-    public void goToHomePage() {
-        driver.navigate().to("https://the-internet.herokuapp.com/");
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Test
-    public void testSuccessfulLogin() {
+    public void shouldBeAbleToSuccessfullyLogin() {
         LoginPage loginPage = homePage.clickFormAuthentication();
         loginPage.setUsernameField("tomsmith");
         loginPage.setPasswordField("SuperSecretPassword!");
@@ -30,7 +22,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Test
-    public void testUnsuccessfulLoginPassword() {
+    public void shouldDisplayUnsuccessfulLoginPassword() {
         LoginPage loginPage = homePage.clickFormAuthentication();
         loginPage.setUsernameField("tomsmith");
         loginPage.setPasswordField("BadPassword");
@@ -39,7 +31,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Test
-    public void testUnsuccessfulLoginUserName() {
+    public void shouldDisplayUnsuccessfulLoginUserName() {
         LoginPage loginPage = homePage.clickFormAuthentication();
         loginPage.setUsernameField("BadUserName");
         loginPage.setPasswordField("SuperSecretPassword!");
@@ -48,7 +40,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Test
-    public void testForgotPassword() {
+    public void shouldAllowRecoveryOfForgotPassword() {
         ForgotPasswordPage forgotPasswordPage = homePage.clickForgotPassword();
         forgotPasswordPage.setEmailField("tau@example.com");
         EmailSentConfirmationPage emailSentConfirmationPage = forgotPasswordPage.clickRetrievePasswordButton();
