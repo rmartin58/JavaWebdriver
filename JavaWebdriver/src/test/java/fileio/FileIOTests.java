@@ -12,7 +12,7 @@ public class FileIOTests extends BaseTests {
     private String filePath = "C:\\src\\Java\\JavaWebdriver\\JavaWebdriver\\resources\\";
     private String fileName = "sample.json";
     @Test
-    public void testFileIO() {
+    public void shouldBeAbleToDoFileIO() {
 
         logger.debug(FileIOTests.class.getName() + ".testFileUpload");
 
