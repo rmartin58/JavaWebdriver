@@ -12,6 +12,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.HomePage;
 import utils.EventReporter;
+import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -98,5 +99,8 @@ public class BaseTests {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
         return options;
+    }
+    public WindowManager getWindowManager(){
+        return new WindowManager(driver);
     }
 }
