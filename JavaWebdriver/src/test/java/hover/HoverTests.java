@@ -8,7 +8,7 @@ import pages.HoversPage;
 public class HoverTests extends BaseTests {
 
     @Test
-    public void testHoverUser1() {
+    public void shouldBeAbleToHoverUser1() {
         logger.debug(HoverTests.class.getName() + ".testHoverUser1");
 
         HoversPage hoversPage = homePage.clickHovers();
