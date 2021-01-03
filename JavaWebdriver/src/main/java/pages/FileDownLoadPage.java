@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class FileDownLoadPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public FileDownLoadPage(WebDriver driver) {
         this.driver = driver;
