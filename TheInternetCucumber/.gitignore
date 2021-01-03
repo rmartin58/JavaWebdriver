@@ -92,7 +92,7 @@ nb-configuration.xml
 ## resource files
 ##############################
 resources/
-
+**/chromedriver*
 ##############################
 ## screenshots
 ##############################
