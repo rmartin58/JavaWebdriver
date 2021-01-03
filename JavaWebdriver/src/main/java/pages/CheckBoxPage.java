@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class CheckBoxPage {
-    private WebDriver driver;
-    private By checkboxes = By.id("checkboxes");
-    private By inputs = By.tagName("input");
+    private final WebDriver driver;
+    private final By checkboxes = By.id("checkboxes");
+    private final By inputs = By.tagName("input");
 
 
     public CheckBoxPage(WebDriver driver) {
@@ -36,12 +36,11 @@ public class CheckBoxPage {
         checkBox.click();
     }
 
+    @SuppressWarnings("unused")
     public String getCheckBoxByLabel(String label) {
         WebElement checkBoxes = driver.findElement(checkboxes);
 
-        String innerText = checkBoxes.getAttribute("innerHTML");
-
-        return innerText;
+        return checkBoxes.getAttribute("innerHTML");
     }
 }
 
