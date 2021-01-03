@@ -5,10 +5,11 @@ import org.openqa.selenium.WebDriver;
 
 public class EmailSentConfirmationPage {
     private final WebDriver driver;
-    private final By textId = By.id("content");
+    private final By textId;
 
     public EmailSentConfirmationPage(WebDriver driver) {
         this.driver = driver;
+        textId = By.id("content");
     }
 
     public String getContentText() {

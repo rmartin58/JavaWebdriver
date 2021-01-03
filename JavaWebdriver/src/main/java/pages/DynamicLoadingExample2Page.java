@@ -8,11 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DynamicLoadingExample2Page {
 
     private final WebDriver driver;
-    private final By startButton = By.cssSelector("#start button");
-    private final By loadedText = By.id("finish");
+    private final By startButton;
+    private final By loadedText;
 
     public DynamicLoadingExample2Page(WebDriver driver){
         this.driver = driver;
+        startButton = By.cssSelector("#start button");
+        loadedText = By.id("finish");
     }
 
     public void clickStartWaitForPresence(){

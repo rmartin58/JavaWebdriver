@@ -11,10 +11,11 @@ import java.util.stream.Collectors;
 public class DropdownPage {
 
     private final WebDriver driver;
-    private final By dropdown = By.id("dropdown");
+    private final By dropdown;
 
     public DropdownPage(WebDriver driver) {
         this.driver = driver;
+        dropdown = By.id("dropdown");
     }
 
     public void selectFromDropDown(String option) {

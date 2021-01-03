@@ -8,12 +8,14 @@ import java.util.List;
 
 public class CheckBoxPage {
     private final WebDriver driver;
-    private final By checkboxes = By.id("checkboxes");
-    private final By inputs = By.tagName("input");
+    private final By checkboxes;
+    private final By inputs;
 
 
     public CheckBoxPage(WebDriver driver) {
         this.driver = driver;
+        checkboxes = By.id("checkboxes");
+        inputs = By.tagName("input");
     }
 
     public List<WebElement> getCheckBoxes() {

@@ -9,11 +9,12 @@ import org.openqa.selenium.interactions.Actions;
 public class ContextMenuPage {
 	private final WebDriver driver;
 
-	private final By hotSpot = By.id("hot-spot");
+	private final By hotSpot;
 
 
 	public ContextMenuPage(WebDriver driver) {
 		this.driver = driver;
+		hotSpot = By.id("hot-spot");
 	}
 
 	public void alert_clickToAccept() {

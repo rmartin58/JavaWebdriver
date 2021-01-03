@@ -8,12 +8,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DynamicLoadingExample1Page {
 
     private final WebDriver driver;
-    private final By startButton = By.cssSelector("#start button");
-    private final By loadingIndicator = By.id("loading");
-    private final By loadedText = By.id("finish");
+    private final By startButton;
+    private final By loadingIndicator;
+    private final By loadedText;
 
     public DynamicLoadingExample1Page(WebDriver driver){
         this.driver = driver;
+        startButton = By.cssSelector("#start button");
+        loadingIndicator = By.id("loading");
+        loadedText = By.id("finish");
     }
 
     @SuppressWarnings("CommentedOutCode")
