@@ -7,18 +7,19 @@ import org.openqa.selenium.interactions.Actions;
 
 public class HoversPage {
 
-    private WebDriver driver;
-    private By figureBox = By.className("figure");
-    private By boxCaption = By.className("figcaption");
+    private final WebDriver driver;
+    private final By figureBox;
+    private final By boxCaption;
 
     public HoversPage(WebDriver driver) {
         this.driver = driver;
+        figureBox = By.className("figure");
+        boxCaption = By.className("figcaption");
     }
 
     /**
-     *
      * @param index starts at 1
-     * @return
+     * @return new FigureCaption object
      */
     public FigureCaption hoverOverFigure(int index) {
         WebElement figure = driver.findElements(figureBox).get(index - 1);
@@ -29,13 +30,15 @@ public class HoversPage {
         return new FigureCaption(figure.findElement(boxCaption));
     }
 
-    public class FigureCaption{
-        private WebElement caption;
-        private By header = By.tagName("h5");
-        private By link = By.tagName("a");
+    public static class FigureCaption {
+        private final WebElement caption;
+        private final By header;
+        private final By link;
 
         public FigureCaption(WebElement caption) {
             this.caption = caption;
+            header = By.tagName("h5");
+            link = By.tagName("a");
         }
 
         public boolean isCaptionDisplayed() {
