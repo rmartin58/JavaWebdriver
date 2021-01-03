@@ -16,7 +16,6 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
@@ -24,10 +23,10 @@ import java.util.Date;
 
 public class BaseTests {
 
-    protected static Logger logger = LogManager.getLogger(BaseTests.class.getName());
+    protected final Logger logger = LogManager.getLogger(BaseTests.class.getName());
+    private final String screenshotsDir = ("screenshots" + File.separator);
 
     public HomePage homePage;
-
     private final String operatingSystemName;
     private final String operatingSystemVersion;
     private final String windowsChromeDriver;
@@ -95,14 +94,14 @@ public class BaseTests {
 
     @AfterMethod
     public void recordFailure(ITestResult result) {
-        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSSS");
+        DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSSS");
         LocalDateTime localDateTime = LocalDateTime.now();
-        String ldtString = FOMATTER.format(localDateTime);
+        String ldtString = FORMATTER.format(localDateTime);
         if (ITestResult.FAILURE == result.getStatus()) {
             var camera = (TakesScreenshot) driver;
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             try {
-                Files.move(screenshot, new File("screenshots/" + ldtString + "." + result.getName() + ".png"));
+                Files.move(screenshot, new File(screenshotsDir + ldtString + "." + result.getName() + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -113,10 +112,11 @@ public class BaseTests {
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         options.setExperimentalOption("useAutomationExtension", false);
-//        options.addArguments("disable-infobars");
+//        options.addArguments("--headless");
         return options;
     }
-    public WindowManager getWindowManager(){
+
+    public WindowManager getWindowManager() {
         return new WindowManager(driver);
     }
 }
