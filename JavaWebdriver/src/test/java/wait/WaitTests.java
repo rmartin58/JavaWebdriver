@@ -7,17 +7,18 @@ import static org.testng.Assert.assertEquals;
 
 public class WaitTests extends BaseTests {
 
-    private String expected = "Hello World!";
-    private String errorMsg = "Loaded text incorrect";
+    private final String expected = "Hello World!";
+    private final String errorMsg = "Loaded text incorrect";
+
     @Test
-    public void shouldWaitUntilHidden(){
+    public void shouldWaitUntilHidden() {
         var loadingPage = homePage.clickDynamicLoading().clickExample1();
         loadingPage.clickStartWaitForInvisible();
         assertEquals(loadingPage.getLoadedText(), expected, errorMsg);
     }
 
     @Test
-    public void shouldWaitUntilVisible(){
+    public void shouldWaitUntilVisible() {
         var loadingPage = homePage.clickDynamicLoading().clickExample1();
         loadingPage.clickStartWaitForVisible();
         assertEquals(loadingPage.getLoadedText(), expected, errorMsg);

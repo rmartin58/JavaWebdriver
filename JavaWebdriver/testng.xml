@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="The Internet Test Suite">
+    <test name="FullSuite">
+        <classes>
+            <class name="alerts.AlertTests"/>
+            <class name="checkbox.CheckBoxTest"/>
+            <class name="contextmenu.ContextMenuTests"/>
+            <class name="dropdown.DropdownTests"/>
+            <class name="fileio.FileIOTests"/>
+            <class name="hover.HoverTests"/>
+            <class name="login.LoginTests"/>
+            <class name="navigation.NavigationTests"/>
+            <class name="wait.WaitTests"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
