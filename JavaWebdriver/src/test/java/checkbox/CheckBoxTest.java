@@ -15,7 +15,7 @@ public class CheckBoxTest extends BaseTests {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
 
         List<WebElement> checkBoxList = checkBoxPage.getCheckBoxes();
-        Assert.assertEquals(checkBoxList.size(),2);
+        Assert.assertEquals(checkBoxList.size(), 2);
 
         Assert.assertFalse(checkBoxPage.getCheckBoxByIndex(1).isSelected());
         Assert.assertTrue(checkBoxPage.getCheckBoxByIndex(2).isSelected());
@@ -27,6 +27,7 @@ public class CheckBoxTest extends BaseTests {
         Assert.assertTrue(checkBoxPage.getCheckBoxByIndex(1).isSelected());
     }
 
+    @SuppressWarnings("unused")
     @Test
     public void shouldBeAbleToCheckBoxByLabel() {
         CheckBoxPage checkBoxPage = homePage.clickCheckBox();
