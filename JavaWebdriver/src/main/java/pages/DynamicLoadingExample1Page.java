@@ -16,6 +16,7 @@ public class DynamicLoadingExample1Page {
         this.driver = driver;
     }
 
+    @SuppressWarnings("CommentedOutCode")
     public void clickStartWaitForInvisible(){
         driver.findElement(startButton).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
