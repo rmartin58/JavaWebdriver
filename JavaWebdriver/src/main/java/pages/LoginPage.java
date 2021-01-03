@@ -4,14 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    private WebDriver driver;
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By loginButton = By.cssSelector("#login button");
-    private By statusAlert = By.id("flash");
+    private final WebDriver driver;
+    private final By usernameField;
+    private final By passwordField;
+    private final By loginButton;
+    private final By statusAlert;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        usernameField = By.id("username");
+        passwordField = By.id("password");
+        loginButton = By.cssSelector("#login button");
+        statusAlert = By.id("flash");
     }
 
     public void setUsernameField(String username) {
