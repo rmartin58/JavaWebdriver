@@ -95,9 +95,3 @@ screenshots/
 ## testNG reports
 ##############################
 test-output/
-
-##############################
-## driver executables
-##############################
-**/chromedriver
-**/chromedriver.exe
