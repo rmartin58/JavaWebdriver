@@ -29,8 +29,10 @@ public class BaseTests {
     public HomePage homePage;
     private final String operatingSystemName;
     private final String operatingSystemVersion;
-    private final String windowsChromeDriver;
-    private final String macChromeDriver;
+    private final String chromedriver = "chromedriver";
+    private final String fileSeparator = File.separator;
+    private final String webdriverDir = System.getProperty("user.home") + fileSeparator + "src" + fileSeparator;
+
     private final String baseURL;
     private EventFiringWebDriver driver;
 
@@ -38,8 +40,6 @@ public class BaseTests {
     public BaseTests() {
         operatingSystemName = System.getProperty("os.name");
         operatingSystemVersion = System.getProperty("os.version");
-        windowsChromeDriver = "resources/chromedriver.exe";
-        macChromeDriver = "resources/chromedriver";
         baseURL = "https://the-internet.herokuapp.com/";
     }
 
@@ -59,11 +59,11 @@ public class BaseTests {
         logger.info(String.format("Base URL: %s", baseURL));
 
         if (operatingSystemName.toLowerCase().contains("windows")) {
-            logger.info(String.format("Browser: %s", windowsChromeDriver.split("/")[1].split("\\.")[0]));
-            System.setProperty("webdriver.chrome.driver", windowsChromeDriver);
+            logger.info(String.format("Browser: %s.exe", chromedriver));
+            System.setProperty("webdriver.chrome.driver", webdriverDir + chromedriver+".exe");
         } else {
-            logger.info(String.format("Browser: %s", macChromeDriver));
-            System.setProperty("webdriver.chrome.driver", macChromeDriver);
+            logger.info(String.format("Browser: %s", chromedriver));
+            System.setProperty("webdriver.chrome.driver", webdriverDir + chromedriver);
         }
     }
 
