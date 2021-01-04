@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.util.Collections;
 
 import static org.testng.Assert.assertEquals;
@@ -18,9 +19,12 @@ public class LoginStepDefinitions {
 
     WebDriver driver;
     private static final String baseUrl = "https://the-internet.herokuapp.com/";
+    private static final String fileSeparator = File.separator;
+    private static final String chromeDriverPath = System.getProperty("user.home") + fileSeparator + "src" + fileSeparator + "chromedriver";
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+        System.out.println(chromeDriverPath);
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver(getChromeOptions());
 //        driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
 //        driver.register(new EventReporter());
