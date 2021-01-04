@@ -1,6 +1,5 @@
 package base;
 
-import com.google.common.io.Files;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -21,6 +20,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Date;
 
+import static com.google.common.io.Files.move;
+
 public class BaseTests {
 
     protected final Logger logger = LogManager.getLogger(BaseTests.class.getName());
@@ -29,9 +30,8 @@ public class BaseTests {
     public HomePage homePage;
     private final String operatingSystemName;
     private final String operatingSystemVersion;
-    private final String chromedriver = "chromedriver";
-    private final String fileSeparator = File.separator;
-    private final String webdriverDir = System.getProperty("user.home") + fileSeparator + "src" + fileSeparator;
+    private final String fileSeparator;
+    private final String webdriverDir;
 
     private final String baseURL;
     private EventFiringWebDriver driver;
@@ -41,6 +41,8 @@ public class BaseTests {
         operatingSystemName = System.getProperty("os.name");
         operatingSystemVersion = System.getProperty("os.version");
         baseURL = "https://the-internet.herokuapp.com/";
+        fileSeparator = File.separator;
+        webdriverDir = System.getProperty("user.home") + fileSeparator + "src" + fileSeparator;
     }
 
     @BeforeSuite
@@ -58,9 +60,10 @@ public class BaseTests {
         logger.info(String.format("OS version: %s", operatingSystemVersion));
         logger.info(String.format("Base URL: %s", baseURL));
 
+        String chromedriver = "chromedriver";
         if (operatingSystemName.toLowerCase().contains("windows")) {
             logger.info(String.format("Browser: %s.exe", chromedriver));
-            System.setProperty("webdriver.chrome.driver", webdriverDir + chromedriver+".exe");
+            System.setProperty("webdriver.chrome.driver", webdriverDir + chromedriver +".exe");
         } else {
             logger.info(String.format("Browser: %s", chromedriver));
             System.setProperty("webdriver.chrome.driver", webdriverDir + chromedriver);
@@ -101,7 +104,7 @@ public class BaseTests {
             var camera = (TakesScreenshot) driver;
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             try {
-                Files.move(screenshot, new File(screenshotsDir + ldtString + "." + result.getName() + ".png"));
+                move(screenshot, new File(screenshotsDir + ldtString + "." + result.getName() + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
